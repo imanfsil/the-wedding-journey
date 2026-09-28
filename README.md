@@ -1,19 +1,35 @@
-# Iman & Danial Wedding Planner
+# Iman & Danial — Wedding Planner
 
-Starter web-app frontend based on the agreed requirements:
-- Poppins typography
-- Responsive mobile/tablet/desktop UI
-- View mode for parents
-- Private admin mode concept
-- Google Sheets + Google Apps Script backend architecture
-- Google Drive for media
+This version is connected to the Google Apps Script Web App and reads wedding data from Google Sheets.
 
-This ZIP is a frontend starter, not yet connected to a live Google Apps Script endpoint.
+## Backend
 
-## Run locally
-Open `index.html` in a browser, or serve the folder with any simple static web server.
+Google Apps Script Web App:
+https://script.google.com/macros/s/AKfycbwu-U9RJ7Rf6xrBoveNEclQWetHP-NlJl9Y36wcjK4q59KuhNYQvS33omGV9mvgS2c/exec
 
-## Next backend step
-Create a Google Apps Script Web App with read/write endpoints and set the endpoint in `assets/app.js`.
+The website is read-only for now. Parents can view the planner without an account.
 
-Important: frontend-only hiding of Admin controls is NOT security. The Apps Script write endpoint must enforce the owner/admin authorization server-side.
+## Google Sheets tabs used
+
+- Workflow
+- Budget
+- Guestlist
+- Legal
+- Personal Prep
+- Tunang
+- Nikah + Resepsi
+- Media (optional; for Google Drive file references)
+
+## Google Drive
+
+The current stable backend does not call DriveApp directly because the Drive folder connection previously produced an Apps Script access error. Drive files can still be used by storing their share/view links in the Media sheet.
+
+Suggested Media columns:
+
+Category | Title | File ID | Drive Link | Type | Notes
+
+## GitHub Pages
+
+Upload the contents of this folder to the GitHub repository. The website can then be published with GitHub Pages.
+
+Do not put an admin secret in app.js. The write API remains protected by the Apps Script Script Property `ADMIN_WRITE_SECRET`.
